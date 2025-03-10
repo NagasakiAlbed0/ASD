@@ -1,0 +1,11 @@
+import random  # aici se importra modulul random pentru a genera numere aleatorii
+
+# aici definesc valoarea minima si maxima pentru generarea randoma
+min_value = 1
+max_value = 100
+
+# folosim fuctia randint si se genereaza numarul
+random_num = random.randint(min_value, max_value)
+
+# Afisez numarul generat
+print(f"Random number: {random_num}")
