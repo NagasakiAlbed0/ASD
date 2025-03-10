@@ -1,0 +1,13 @@
+def fibonacci(n):
+    # Daca n este 0 sau 1, returneaza n (asta mai dez)
+    if n <= 1:
+        return n
+    # Apeleaza  functia pentru n-1 si n-2 si returneaza suma acestora
+    return fibonacci(n-1) + fibonacci(n-2)
+
+# Citestre numarul de termeni de la utilizator
+n = int(input("Enter the number of terms:\n "))
+
+# Genereaza si afisaza secventa Fibonacci pentru primii n termeni
+for i in range(n):
+    print(fibonacci(i), end=" ")  # Afisam fiecare termen pe aceeasi linie, separat prin spatiu
