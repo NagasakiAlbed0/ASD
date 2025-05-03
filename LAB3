@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 10
+
+int graph[MAX][MAX];   
+int visited[MAX];      
+int n;                 
+
+void DFS(int node) {
+    visited[node] = 1;
+    printf("Vizitez nodul %d\n", node);
+
+    for (int i = 0; i < n; i++) {
+        if (graph[node][i] == 1 && !visited[i]) {
+            printf("Merg de la %d la %d\n", node, i);
+            DFS(i);
+        }
+    }
+}
+
+void printGraph() {
+    printf("\nMatricea de adiacenta:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", graph[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int edges, src, dest, start;
+
+    printf("Introdu numarul de noduri: ");
+    scanf("%d", &n);
+
+    printf("Introdu numarul de muchii: ");
+    scanf("%d", &edges);
+
+    for (int i = 0; i < edges; i++) {
+        printf("Muchia %d - introdu doua noduri (de la - la): ", i + 1);
+        scanf("%d %d", &src, &dest);
+        graph[src][dest] = 1;
+        graph[dest][src] = 1; 
+    }
+
+    printGraph();
+
+    printf("\nIntrodu nodul de start pentru DFS: ");
+    scanf("%d", &start);
+
+    printf("\nParcurgere DFS:\n");
+    DFS(start);
+
+    return 0;
+}
